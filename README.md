@@ -68,3 +68,38 @@ Your `tsconfig.json` will need to have an `angularCompilerOptions` section, poin
 ```
 
 Outputted files will be cached in memory, so all the AoT generated files will not leak out into your app source code.
+
+### Code splitting
+
+The loader will also automatically split out any routes for you that you have defined using `loadChildren`, meaning your application will load and compile faster.
+
+To take advantage of this, configure your routes like so:
+
+```js
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
+
+import { AppComponent } from './app.component';
+
+export const ROUTER_CONFIG: Routes = [
+  { path: '', loadChildren: './containers/home/home.module#HomeModule' },
+  { path: 'about', loadChildren: './containers/about/about.module#AboutModule' },
+  { path: 'contact', loadChildren: './containers/contact/contact.module#ContactModule' }
+];
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    RouterModule,
+    RouterModule.forRoot(ROUTER_CONFIG)
+  ],
+  bootstrap: [
+    AppComponent
+  ],
+  declarations: [
+    AppComponent
+  ]
+})
+export class AppModule {}
+```
