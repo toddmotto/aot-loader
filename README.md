@@ -1,6 +1,8 @@
 # Ultimate Angular AoT loader (beta)
 
 [![Build Status][circle-badge]][circle-badge-url]
+[![Dependency Status][david-badge]][david-badge-url]
+[![devDependency Status][david-dev-badge]][david-dev-badge-url]
 [![npm][npm-badge]][npm-badge-url]
 
 **This is currently in beta - please report any issues you may have with it**
@@ -29,5 +31,9 @@ You can see how to use the AoT loader in the [wiki here](https://github.com/Ulti
 
 [circle-badge]: https://circleci.com/gh/UltimateAngular/aot-loader.svg?style=svg
 [circle-badge-url]: https://circleci.com/gh/UltimateAngular/aot-loader
+[david-badge]: https://david-dm.org/UltimateAngular/aot-loader.svg
+[david-badge-url]: https://david-dm.org/UltimateAngular/aot-loader
+[david-dev-badge]: https://david-dm.org/UltimateAngular/aot-loader/dev-status.svg
+[david-dev-badge-url]: https://david-dm.org/UltimateAngular/aot-loader?type=dev
 [npm-badge]: https://img.shields.io/npm/v/@ultimate/aot-loader.svg
 [npm-badge-url]: https://www.npmjs.com/package/@ultimate/aot-loader
