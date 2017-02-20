@@ -10,6 +10,10 @@ To install, simply run the following:
 
 ```bash
 yarn add --dev @ultimate/aot-loader
+
+# OR
+
+npm i --save-dev @ultimate/aot-loader
 ```
 
 ### Usage
