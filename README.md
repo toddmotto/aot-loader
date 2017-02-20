@@ -29,7 +29,7 @@ npm i --save-dev @ultimate/aot-loader
 
 You can see how to use the AoT loader in the [wiki here](https://github.com/UltimateAngular/aot-loader/wiki).
 
-[circle-badge]: https://circleci.com/gh/UltimateAngular/aot-loader.svg?style=svg
+[circle-badge]: https://circleci.com/gh/UltimateAngular/aot-loader.svg?style=shield
 [circle-badge-url]: https://circleci.com/gh/UltimateAngular/aot-loader
 [david-badge]: https://david-dm.org/UltimateAngular/aot-loader.svg
 [david-badge-url]: https://david-dm.org/UltimateAngular/aot-loader
