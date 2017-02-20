@@ -4,6 +4,14 @@
 
 Compile and develop your Angular applications using AoT compilation, removing the need for you to include the Angular compiler when distributing your app, as well as making it super fast.
 
+### Installation
+
+To install, simply run the following:
+
+```bash
+yarn add --dev @ultimate/aot-loader
+```
+
 ### Usage
 
 To use, simply include the AoT loader as a loader for your TypeScript files. It'll also act as a TypeScript loader, respecting your configuration inside `tsconfig.json`.
