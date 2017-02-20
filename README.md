@@ -111,3 +111,133 @@ export const ROUTER_CONFIG: Routes = [
 })
 export class AppModule {}
 ```
+
+### Sass, Less, etc
+
+You can use any CSS preprocessor with the loader. Just set up your loaders how you would normally and use `raw-loader` as the last loader.
+
+```js
+const aotLoader = require('@ultimate/aot-loader');
+
+module.exports = {
+  entry: {
+    app: ['./app/main.ts']
+  },
+  output: {
+    filename: '[name].js',
+    publicPath: '/build/',
+    path: path.resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        loaders: ['raw-loader', 'sass-loader']
+      },
+      {
+        test: /\.ts$/,
+        loaders: ['@ultimate/aot-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  plugins: [
+  	new aotLoader.AotPlugin({
+      tsConfig: './tsconfig.json'
+    })
+  ]
+};
+```
+
+Example component:
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'example-component',
+  styleUrls: ['example-component.scss'],
+  template: `
+    <div class="example-component">
+      <h3 class="example-component__title">This is an example component!</h3>
+      <p class="example-component__description">Wooo!!!</p>
+    </div>
+  `
+})
+export class ExampleComponent {
+}
+```
+
+And `example-component.scss` may look something like this:
+
+```scss
+.example-component {
+  &__title {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  &__description {
+    font-size: 16px;
+    line-height: 23px;
+  }
+}
+```
+
+### External HTML templates
+
+To use external HTML templates for your components, simply add `raw-loader` as the loader for all HTML files:
+ 
+```js
+const aotLoader = require('@ultimate/aot-loader');
+
+module.exports = {
+  entry: {
+    app: ['./app/main.ts']
+  },
+  output: {
+    filename: '[name].js',
+    publicPath: '/build/',
+    path: path.resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [
+    	{
+        test: /\.html$/,
+        loaders: ['raw-loader']
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['raw-loader', 'sass-loader']
+      },
+      {
+        test: /\.ts$/,
+        loaders: ['@ultimate/aot-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  plugins: [
+  	new aotLoader.AotPlugin({
+      tsConfig: './tsconfig.json'
+    })
+  ]
+};
+```
+
+Example component:
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'example-component',
+  templateUrl: 'home.component.html'
+})
+export class ExampleComponent {
+}
+```
