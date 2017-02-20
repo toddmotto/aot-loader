@@ -1,4 +1,6 @@
-# Ultimate Angular AoT loader
+# Ultimate Angular AoT loader (beta)
+
+**This is currently in beta - please report any issues you may have with it**
 
 Compile and develop your Angular applications using AoT compilation, removing the need for you to include the Angular compiler when distributing your app, as well as making it super fast.
 
