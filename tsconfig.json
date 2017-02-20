@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "inlineSources": true,
+    "lib": ["es2015", "es2016", "es2017"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "stripInternal": true,
+    "target": "es5"
+  },
+  "files": [
+    "src/types/magic-string.d.ts",
+    "index.ts"
+  ]
+}

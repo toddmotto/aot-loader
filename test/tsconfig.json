@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "inlineSources": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "sourceMap": true,
+    "target": "es5"
+  }
+}

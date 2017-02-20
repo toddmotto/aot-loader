@@ -1,0 +1,50 @@
+{
+  "name": "@ultimate/aot-loader",
+  "version": "0.0.0",
+  "description": "AoT loader for Webpack",
+  "author": "Ultimate Angular",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/UltimateAngular/aot-loader.git",
+    "type": "git"
+  },
+  "scripts": {
+    "build": "yarn run lint && yarn run compile && yarn run bundle",
+    "bundle": "rollup -c rollup.config.js >/dev/null 2>&1",
+    "compile": "tsc -p tsconfig.json",
+    "start": "nodemon --exec yarn run build -e ts --watch src",
+    "clean": "rimraf dist && mkdir -p dist",
+    "copy": "cp src/package.json dist/package.json",
+    "lint": "tslint --project tsconfig.json",
+    "pretest": "yarn run build",
+    "mocha": "TS_NODE_PROJECT=test/tsconfig.json mocha --compilers ts:ts-node/register",
+    "mocha:watch": "yarn run mocha -- --watch --reporter min",
+    "prestart": "yarn run clean && yarn run copy",
+    "test": "yarn run mocha"
+  },
+  "devDependencies": {
+    "@angular/compiler": "4.0.0-beta.7",
+    "@angular/compiler-cli": "4.0.0-beta.7",
+    "@angular/core": "4.0.0-beta.7",
+    "@types/chai": "3.4.34",
+    "@types/mocha": "2.2.37",
+    "@types/node": "7.0.0",
+    "@types/source-map": "0.5.0",
+    "chai": "3.5.0",
+    "mocha": "3.2.0",
+    "nodemon": "1.11.0",
+    "rimraf": "2.5.4",
+    "rollup": "0.41.3",
+    "rxjs": "5.0.3",
+    "ts-node": "2.0.0",
+    "tslib": "1.5.0",
+    "tslint": "4.3.1",
+    "typescript": "2.1.6",
+    "webpack": "2.2.1",
+    "zone.js": "0.7.5"
+  },
+  "dependencies": {
+    "magic-string": "0.19.0",
+    "source-map": "0.5.6"
+  }
+}
