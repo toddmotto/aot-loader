@@ -39,6 +39,7 @@ import { AotContext } from './context';
 import { AngularCompilerOptions, AotCompilerHost } from './compiler';
 
 export interface AotConfig {
+  entryModule?: string;
   tsConfig: string;
 }
 
@@ -103,6 +104,10 @@ export class AotPlugin {
     const angularCompilerOptions = this.tsConfig.angularCompilerOptions;
     angularCompilerOptions.basePath = angularCompilerOptions.basePath || dirname(tsConfigPath);
     angularCompilerOptions.genDir = join(angularCompilerOptions.basePath, angularCompilerOptions.genDir || '__generated');
+
+    if (config.entryModule) {
+      angularCompilerOptions.entryModule = config.entryModule;
+    }
 
     const [path, module] = angularCompilerOptions.entryModule.split('#');
     this.entryModule = {path, module};
