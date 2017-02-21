@@ -1,6 +1,6 @@
 {
   "name": "@ultimate/aot-loader",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "AoT loader for Webpack",
   "main": "bundle/ultimate.aot.umd.js",
   "module": "index.js",
