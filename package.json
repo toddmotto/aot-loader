@@ -20,7 +20,9 @@
     "mocha": "TS_NODE_PROJECT=test/tsconfig.json mocha \"test/**/*.spec.ts\" --timeout 10000 --compilers ts:ts-node/register",
     "mocha:watch": "yarn run mocha -- --watch --reporter min",
     "prestart": "yarn run clean && yarn run copy",
-    "test": "yarn run mocha"
+    "test": "yarn run test:clean && yarn run test:link && yarn run mocha",
+    "test:clean": "rimraf test/**/*.js",
+    "test:link": "(cd dist && yarn link) && yarn link @ultimate/aot-loader"
   },
   "devDependencies": {
     "@angular/common": "4.0.0-beta.8",
