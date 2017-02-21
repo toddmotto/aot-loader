@@ -14,7 +14,7 @@
     "compile": "tsc -p tsconfig.json",
     "start": "nodemon --exec yarn run build -e ts --watch src",
     "clean": "rimraf dist && mkdir -p dist",
-    "copy": "cp src/package.json dist/package.json",
+    "copy": "cp src/package.json dist/package.json && cp README.md dist/README.md",
     "lint": "tslint --project tsconfig.json",
     "pretest": "yarn run build",
     "mocha": "TS_NODE_PROJECT=test/tsconfig.json mocha --compilers ts:ts-node/register",
