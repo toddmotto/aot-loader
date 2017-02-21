@@ -50,8 +50,6 @@ export interface GeneratedFile {
 
 const FILE_EXTENSION = /\.[^/.]+$/;
 const INJECTOR = /(\w+?)Injector/;
-const MODULE = /@NgModule/;
-const NGSTYLE_SUFFIX = /(\.shim)?\.ngstyle\.ts$/;
 
 export class AotPlugin {
   context: AotContext;
