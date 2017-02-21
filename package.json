@@ -17,7 +17,7 @@
     "copy": "cp src/package.json dist/package.json && cp README.md dist/README.md",
     "lint": "tslint --project tsconfig.json",
     "pretest": "yarn run build",
-    "mocha": "TS_NODE_PROJECT=test/tsconfig.json mocha --recursive --compilers ts:ts-node/register",
+    "mocha": "TS_NODE_PROJECT=test/tsconfig.json mocha \"test/**/*.spec.ts\" --timeout 10000 --compilers ts:ts-node/register",
     "mocha:watch": "yarn run mocha -- --watch --reporter min",
     "prestart": "yarn run clean && yarn run copy",
     "test": "yarn run mocha"
@@ -34,6 +34,7 @@
     "@types/node": "7.0.0",
     "@types/source-map": "0.5.0",
     "chai": "3.5.0",
+    "core-js": "^2.4.1",
     "mocha": "3.2.0",
     "nodemon": "1.11.0",
     "rimraf": "2.5.4",
