@@ -42,14 +42,6 @@ export interface AotConfig {
   tsConfig: string;
 }
 
-export interface AnalyzedFile {
-  srcUrl: string;
-  directives: StaticSymbol[];
-  pipes: StaticSymbol[];
-  ngModules: StaticSymbol[];
-  injectables: StaticSymbol[];
-}
-
 export interface GeneratedFile {
   genFileUrl: string;
   source: string;
