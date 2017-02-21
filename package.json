@@ -9,7 +9,7 @@
     "type": "git"
   },
   "scripts": {
-    "build": "yarn run lint && yarn run compile && yarn run bundle",
+    "build": "yarn run clean && yarn run copy && yarn run lint && yarn run compile && yarn run bundle",
     "bundle": "rollup -c rollup.config.js >/dev/null 2>&1",
     "compile": "tsc -p tsconfig.json",
     "start": "nodemon --exec yarn run build -e ts --watch src",
