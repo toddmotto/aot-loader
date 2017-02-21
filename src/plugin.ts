@@ -169,17 +169,17 @@ export class AotPlugin {
       this.prevTimestamps = new Map(objToMap<number>(compilation.fileTimestamps));
 
       const files = changedFiles.length ? changedFiles : this.parsedConfig.fileNames;
-      this.createSourceFiles(files, compilation);
 
-      if (changedFiles.length) {
-        // compile files if we've got newly updated files
+      try {
+        this.createSourceFiles(files, compilation);
 
-        try {
+        if (changedFiles.length) {
+          // compile files if we've got newly updated files
           this.compilePromise = this.compileFiles(changedFiles);
           await this.compilePromise;
-        } catch (err) {
-          errors.push(err);
         }
+      } catch (err) {
+        errors.push(err);
       }
 
       callback();
@@ -374,9 +374,15 @@ export class AotPlugin {
 
   getModuleDependencies(sourceFile: SourceFile, file: string) {
     const fileDependencies: string[] = [];
-    const localDependencies = this.findLocalDependencies(sourceFile)
+    const localDependenciesSearch = this.findLocalDependencies(sourceFile);
+    const localDependencies = localDependenciesSearch
       .map((path) => resolveModuleName(path, file, this.parsedConfig.options, this.host))
-      .map((resolved) => resolved.resolvedModule.resolvedFileName);
+      .map((resolved, index) => {
+        if (!resolved.resolvedModule) {
+          throw new Error(`Error: ${file} attempted to import ${localDependenciesSearch[index]}, but it doesn't exist`);
+        }
+        return resolved.resolvedModule.resolvedFileName;
+      });
 
     for (const path of localDependencies) {
       if (!this.moduleDependencies.has(file)) {
