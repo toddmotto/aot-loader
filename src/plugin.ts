@@ -101,7 +101,7 @@ export class AotPlugin {
 
     this.parsedConfig = parseJsonConfigFileContent(this.tsConfig, sys, dirname(tsConfigPath), null, tsConfigPath);
 
-    const angularCompilerOptions = this.tsConfig.angularCompilerOptions;
+    const angularCompilerOptions = this.tsConfig.angularCompilerOptions || {};
     angularCompilerOptions.basePath = angularCompilerOptions.basePath || dirname(tsConfigPath);
     angularCompilerOptions.genDir = join(angularCompilerOptions.basePath, angularCompilerOptions.genDir || '__generated');
 
